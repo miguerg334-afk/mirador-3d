@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mirador — Residencias</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101717;color:#f8f3e8;font:15px system-ui,sans-serif}header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid #ffffff25;letter-spacing:.16em}header strong{font-family:Georgia;font-size:23px}header small{color:#bec5bb}main{display:grid;grid-template-columns:minmax(270px,31%) 1fr;min-height:calc(100svh - 72px)}aside{padding:clamp(24px,5vw,80px);align-self:center}h1{font:clamp(44px,5vw,90px)/.92 Georgia;margin:12px 0 24px;font-weight:400}p{color:#c0c8be;line-height:1.6}label,dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#d1bc99}select,button{font:inherit;padding:12px;border:1px solid #ffffff55;background:#182323;color:#fff;border-radius:4px;cursor:pointer}select{width:100%;margin-top:8px}button.primary{background:#e3c797;color:#18201c;border-color:transparent;font-weight:700;width:100%}dl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}dd{margin:6px 0 0}.stage{position:relative;overflow:clip;min-height:480px;background:linear-gradient(#7e9ca2,#e9c6a2 66%,#364344 67%);isolation:isolate}.scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .6s;background:#b8b4a8}.inside .scene{opacity:1;visibility:visible}.scene canvas{width:100%;height:100%;display:block;touch-action:none}.scene p{position:absolute;top:5px;left:16px;background:#182323;padding:6px 10px;border-radius:4px;color:white}.scene p:empty{display:none}[hidden]{display:none!important}@media(max-width:700px){main{display:flex;flex-direction:column}.stage{order:-1;min-height:440px}aside{align-self:stretch}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.stage:not(.inside){min-height:0;background:#101717}
+main:not(:has(.inside)){grid-template-columns:1fr}
+main:not(:has(.inside)) .stage{display:none}
+main:not(:has(.inside)) aside{max-width:600px}
+main:has(.inside) h1{font-size:clamp(32px,3.45vw,54px)}
+.room-menu,.lighting-menu{display:flex;flex-wrap:wrap;gap:7px}
+.lighting-menu{margin-top:20px;padding-top:16px;border-top:1px solid #ffffff25}
+#apartment-menu button[aria-pressed=true]{background:#e3c797;color:#18201c;border-color:transparent}
+#entry-status:empty{display:none}
+@media(max-width:700px){main:has(.inside){display:flex}.stage.inside{order:0}main:has(.inside) h1{font-size:36px;margin:0 0 16px}}
+</style>
+<header><strong>MIRADOR</strong><small>DEMO INMOBILIARIA</small></header>
+<main>
+  <aside>
+    <h1>Apartamento<br>Mirador</h1>
+    <button class="primary" id="enter" aria-controls="apartment">Entrar al apartamento</button>
+    <p id="entry-status" role="status"></p>
+    <div id="apartment-menu" hidden>
+      <nav class="room-menu" aria-label="Estancias"></nav>
+      <div class="lighting-menu" role="group" aria-label="Iluminación"></div>
+    </div>
+  </aside>
+  <section class="stage" aria-label="Visor del apartamento">
+    <div class="scene" id="apartment" hidden><p id="hint" role="status"></p></div>
+  </section>
+</main>
+<script src="three.min.js"></script><script src="app.js?v=5"></script>
+</html>
